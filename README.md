@@ -1,4 +1,6 @@
-# Raster chef
+# Raster Chef
+
+> "It's gonna take more than a clever cook to get that right. It's gonna take a magician."
 
 This is a collection of python notebooks designed to provide resources and examples for ingesting Remote Sensing satellite data from a varietry of different sources.
 
