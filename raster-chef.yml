@@ -1,0 +1,22 @@
+name: raster-chef
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.9
+  - gdal
+  - rasterio
+  - pystac-client
+  - pystac
+  - geopandas
+  - numpy
+  - scipy
+  - xarray
+  - rioxarray
+  - matplotlib
+  - pytest
+  - black
+  - ipython
+  - jupyterlab
+
