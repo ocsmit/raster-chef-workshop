@@ -25,8 +25,6 @@ gdal.SetConfigOption("GDAL_DISABLE_READDIR_ON_OPEN", "YES")
 gdal.SetConfigOption("CPL_VSIL_CURL_ALLOWED_EXTENSIONS", "TIF")
 
 
-
-
 def downloader(item, geometry, outpath):
     for band, file_dict in item["assets"].items():
         fp = file_dict["href"]
@@ -36,12 +34,8 @@ def downloader(item, geometry, outpath):
             # calculate pixels to be streamed in cog
             coord_upper_left = coord_transformer.transform(bbox[3], bbox[0])
             coord_lower_right = coord_transformer.transform(bbox[1], bbox[2])
-            pixel_upper_left = geo_fp.index(
-                coord_upper_left[0], coord_upper_left[1]
-            )
-            pixel_lower_right = geo_fp.index(
-                coord_lower_right[0], coord_lower_right[1]
-            )
+            pixel_upper_left = geo_fp.index(coord_upper_left[0], coord_upper_left[1])
+            pixel_lower_right = geo_fp.index(coord_lower_right[0], coord_lower_right[1])
 
             for pixel in pixel_upper_left + pixel_lower_right:
                 # If the pixel value is below 0, that means that
@@ -101,7 +95,6 @@ if __name__ == "__main__":
     )
     print(search.matched())
 
-
     item_collection = search.get_all_items()
 
     items = item_collection.to_dict()["features"]
@@ -110,6 +103,4 @@ if __name__ == "__main__":
     outpath = "./data_out"
 
     pool = mp.Pool(5)
-    results = pool.starmap(
-        downloader, [(item, geojson, outpath) for item in items]
-    )
+    results = pool.starmap(downloader, [(item, geojson, outpath) for item in items])
