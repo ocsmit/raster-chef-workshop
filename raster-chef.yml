@@ -20,4 +20,7 @@ dependencies:
   - ipython
   - jupyterlab
   - planetary-computer
+  - pip:
+    - stackstac
+
 
